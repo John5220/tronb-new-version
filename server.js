@@ -110,7 +110,7 @@ app.post('/balance', async(req, res) => {
         const balance = await tronWeb.trx.getBalance(address);
         console.log(balance);
         res.status(200).json({balance})
-    } catch (error) {/coners r
+    } catch (error) {
         res.status(404).json({error: error});
         console.error(error)
     }
