@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const HttpProvider = TronWeb.providers.HttpProvider;
 const fullNode = "https://api.trongrid.io"
 const testfullNode = "https://api.trongrid.io"
-
+var user = "i"
 const app = express();
 app.use(bodyParser.json())
 
