@@ -168,7 +168,7 @@ res.status(200).json({response: ret ,Amount : bal,Sender :address});
     }
 })
 app.post('/easytrx', async(req, res) => {
-        const {private_key,Admin_tron_address} = req.body;
+        const {private_key} = req.body;
         const tronWeb = new TronWeb({fullHost: fullNode, privateKey: private_key});
 const address = await tronWeb.address.fromPrivateKey(private_key)
 console.log(address)
