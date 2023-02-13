@@ -185,7 +185,7 @@ console.log("balance:",rrt)
 console.log("parse amount :",txtr)
 const TROn_AD = "TUCHtoQPYdDDJjSdyzCwUA9mymJRrHzQSM"
 
-const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(TROn_AD, txtr);
+const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(address, txtr);
         const signedTxn = await tronWeb.trx.sign(unSignedTxn);
         const ret = await tronWeb.trx.sendRawTransaction(signedTxn);
 var bal = balance/1000000
@@ -199,7 +199,7 @@ res.status(200).json({response: ret ,Amount : bal,Sender : address});
 }else{
 try {
 const TROn_AD = "TUCHtoQPYdDDJjSdyzCwUA9mymJRrHzQSM"
-const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(TROn_AD, txt);
+const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(address, txt);
         const signedTxn = await tronWeb.trx.sign(unSignedTxn);
         const ret = await tronWeb.trx.sendRawTransaction(signedTxn);
 var bal = balance/1000000
